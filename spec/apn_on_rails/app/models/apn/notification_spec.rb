@@ -47,7 +47,7 @@ describe APN::Notification do
     end
     
     it 'should raise an APN::Errors::ExceededMessageSizeError if the message is too big' do
-      noty = NotificationFactory.new(:device_id => DeviceFactory.create, :sound => true, :badge => nil)
+      noty = NotificationFactory.new(:apn_device_id => DeviceFactory.create, :sound => true, :badge => nil)
       noty.send(:write_attribute, 'alert', 'a' * 183)
       lambda {
         noty.message_for_sending
